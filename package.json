@@ -1,7 +1,7 @@
 {
   "name": "ssgulnur",
-  "version": "1.0.0",
-  "description": "A command-line tool to generate static HTML website from a provided raw data.",
+  "version": "0.1.0",
+  "description": "SSGulnur is a command-line tool to generate static HTML web page from a provided file or folder.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,5 +21,12 @@
   "devDependencies": {
     "eslint": "^8.24.0",
     "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.4.0"
+  },
+  "bin": {
+    "ssgulnur": "./src/index.js"
   }
 }
