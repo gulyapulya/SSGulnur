@@ -1,0 +1,25 @@
+{
+  "name": "ssgulnur",
+  "version": "1.0.0",
+  "description": "A command-line tool to generate static HTML website from a provided raw data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --config .eslintrc.js src/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulyapulya/SSGulnur.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gulyapulya/SSGulnur/issues"
+  },
+  "homepage": "https://github.com/gulyapulya/SSGulnur#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "prettier": "2.7.1"
+  }
+}
