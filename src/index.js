@@ -14,9 +14,11 @@ program
     .description("A custom Static Site Generator (SSG)")
     .option("-v, --version", "current version")
     .option("-h, --help", "help guide")
-    .option("-i, --input <file>", "specify file or folder to use")
+    .option("-i, --input <source>", "specify file or folder to use")
     .option("-o, --output <folder>", "specify an output folder for produced html")
-    .option("-s, --stylesheet <stylesheet>", "specify a stylesheet to use")
+    .option("-s, --stylesheet <url>", "specify a stylesheet to use")
     .action(ssgulnur);
     
 program.parse();
+
+
