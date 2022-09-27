@@ -61,3 +61,6 @@ For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 * `ssgulnur -i "Example file path.txt"`
 * `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
 
+Stories folder is provided as a sample which you can use. It contains five Sherlock Holmes stories by Sir Arthur Conan Doyle. 
+Generated static pages for the sample can be seen here: https://ssg-gulnur-sample.vercel.app
+
