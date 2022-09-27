@@ -36,6 +36,8 @@ function input(source, outputFolder, stylesheetURL) {
     } else if (outputFolderType == "folder") {
         helper.deleteFolder(outputFolder);
     }
+    if (outputFolder != "./dist" && outputFolder != "dist")
+        helper.deleteFolder("./dist");
     helper.createFolder(outputFolder);
     
     sourceFiles.forEach((currentFile) => {createHTML(currentFile, outputFolder, stylesheetURL);});
@@ -60,18 +62,18 @@ function createHTML(filePath, outputFolder, stylesheetURL) {
 
     //create body
     let line;
-    let paragraph = '';
-    let body = '';
+    let paragraph = ``;
+    let body = ``;
     while ((line = liner.next())) {
-        line = line.toString("ascii");
-        if (line == '') {
+        line = line.toString("utf-8");
+        if (line == ``) {
             body += `
             <p>${paragraph}</p>
             `;
-            paragraph = '';
+            paragraph = ``;
         }
         else {
-            paragraph += (line + ' ');
+            paragraph += `${line} `;
         }
     }
 

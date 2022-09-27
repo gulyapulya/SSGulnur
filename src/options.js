@@ -4,7 +4,7 @@ const chalk = require("chalk");
 
 //Lets us get all of the info from package.json file
 //https://stackoverflow.com/questions/62345060/getting-name-property-from-package-json-with-nodejs
-const currentInfo = require("../package.json");
+const {version, description} = require("../package.json");
 
 //Get functions related to the ssg and html creation
 const ssg = require("./ssg");
@@ -18,12 +18,12 @@ function ssgulnur(options) {
     let stylesheetURL = "";
 
     if (options.version) {
-        console.log(chalk.green.bold(currentInfo.version));
+        console.log(chalk.green.bold("SSGulnur: ") + chalk.green(version));
         return;
     }
     if (options.help) {
         console.log(chalk.green.bold("Help guide"));
-        console.log(chalk.gray(currentInfo.description));
+        console.log(chalk.gray(description));
         console.log(chalk.green("Usage:"));
         console.log(chalk.green.dim("ssgulnur -v | --version") + chalk.gray(" current version"));
         console.log(chalk.green.dim("ssgulnur -h | --help") + chalk.gray(" help guide"));
