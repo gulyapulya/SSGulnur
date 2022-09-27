@@ -7,26 +7,26 @@
 
 ## Overview
 
-SSGulnur is a command-line tool to generate static HTML web page from a provided file or folder. 
+SSGulnur is a command-line tool to generate static HTML web pages from a provided file or folder. 
 
 ## Installation
 
 Node is required.
 
 1. Clone this repository to your local machine
-2. Naviagte to the cloned directory
-3. Run 
+2. Navigate to the cloned directory in your terminal 
+3. Run npm to install globally 
 `npm install -g`
 
 ## Usage 
 
 ### ssgulnur -v | --version
 
-Displays the current version
+Displays the tool's name and current version.
 
 ### ssgulnur -h | --help
 
-Displays a help guide with all instructions
+Displays a help guide with all instructions.
 
 ```
 Help guide
@@ -45,7 +45,7 @@ For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 ### ssgulnur -i | --input <source>
 
 * Source can be a single file or folder which can also contain sub-folders. 
-* For file names with spaces, please use quotation marks. For example: `ssgulnur -i "Example file path.txt"`
+* For file names with spaces, please use quotation marks. For example: `ssgulnur -i "Example file path.txt"`.
 * For each provided file an html file will be generated. By default, all html files will be placed into the `./dist` folder.
 * All titles need to be the first line in the file followed by two blank lines. Otherwise, it will be considered as part of the story.
 
