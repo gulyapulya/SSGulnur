@@ -9,6 +9,10 @@ const helper = require("./helper")
 //https://nodejs.org/api/fs.html
 const fs = require("fs");
 
+//Npm module for file reading
+//https://www.npmjs.com/package/n-readlines
+const nReadlines = require('n-readlines');
+
 function input(source, outputFolder, stylesheetURL) {
     //manage source
     let sourceFiles = [];
@@ -38,13 +42,46 @@ function input(source, outputFolder, stylesheetURL) {
 }
 
 
-function createHTML(file, outputFolder, stylesheetURL) {
-    let filename = file.split('\\').pop().split('/').pop().split(".")[0] + ".html";
-    fs.writeFile(outputFolder + "/" + filename, "created", function (err) {
+function createHTML(filePath, outputFolder, stylesheetURL) {
+    //get file name solely with no extension
+    let file = filePath.split('\\').pop().split('/').pop().split(".")[0] + ".html";
+
+    const liner = new nReadlines(filePath);
+    let title = '';
+    let firstline = liner.next().toString("ascii");
+
+    //check for title
+    if (liner.next().toString("ascii") == "" && liner.next().toString("ascii") == "") {
+        title = firstline;
+    }
+    else {
+        liner.reset();
+    }
+
+    //create body
+    let line;
+    let paragraph = '';
+    let body = '';
+    while ((line = liner.next())) {
+        line = line.toString("ascii");
+        if (line == '') {
+            body += `
+            <p>${paragraph}</p>
+            `;
+            paragraph = '';
+        }
+        else {
+            paragraph += (line + ' ');
+        }
+    }
+
+    let html = helper.pasteIntoTemplate(title, body, stylesheetURL);
+
+    fs.writeFile(outputFolder + "/" + file, html, function (err) {
         if (err) {
             console.log(chalk.bgRed("Error:") + chalk.red(err));
         }
-        console.log(chalk.bgGreen(filename) + chalk.green(' is created successfully.'));
+        console.log(chalk.green(file) + chalk.gray(' was created for ') + chalk.gray(filePath));
     });
 }
 

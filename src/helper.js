@@ -55,3 +55,29 @@ exports.readFilesFrom = (path) => {
     });
     return files;
 }
+
+exports.pasteIntoTemplate = (title, body, stylesheet) => {
+    let html = `
+    <!doctype html>
+    <html lang="en">
+        <head>
+            <link rel="stylesheet" href="${stylesheet}">
+            <meta charset="utf-8">`;
+    if (title != '') {
+        html += `
+            <title>${title}</title>`;
+    }
+    html += `<meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+        <body style="background-color:#F2EECB;">`;
+    if (title != '') {
+        html += `
+            <h1>${title}</h1>`;
+    }
+    html += ` 
+            ${body}
+        </body>
+    </html>
+    `;
+    return html;
+}
