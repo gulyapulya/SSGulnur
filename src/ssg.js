@@ -13,6 +13,9 @@ const fs = require("fs");
 //https://www.npmjs.com/package/n-readlines
 const nReadlines = require('n-readlines');
 
+//NodeJS built-in core path module
+const nodePath = require("path");
+
 function input(source, outputFolder, stylesheetURL) {
     //manage source
     let sourceFiles = [];
@@ -26,7 +29,10 @@ function input(source, outputFolder, stylesheetURL) {
         sourceFiles = sourceFiles.concat(helper.readFilesFrom(source));
     //then it is file
     } else {
-        sourceFiles.push(source);
+        //only push file if it is a .txt or .md file
+        if (nodePath.extname(source) == ".txt" || nodePath.extname(source) == ".md") {
+            sourceFiles.push(source);
+        }
     }
     
     //manage output folder
