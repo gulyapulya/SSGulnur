@@ -79,6 +79,7 @@ function createHTML(filePath, outputFolder, stylesheetURL) {
             paragraph = ``;
         }
         else {
+            line = helper.markdownParser(line);
             paragraph += `${line} `;
         }
     }

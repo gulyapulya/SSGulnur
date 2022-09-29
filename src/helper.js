@@ -88,3 +88,12 @@ exports.pasteIntoTemplate = (title, body, stylesheet) => {
     `;
     return html;
 }
+
+exports.markdownParser = (line) => {
+    //convert markdown italics * to html <i> element
+    line = line.replace(/\*(.*)\*/g, '<i>$1</i>');
+    //convert markdown italics _ to html <i> element
+    line = line.replace(/_(.*)_/g, '<i>$1</i>');
+    return line;
+}
+
