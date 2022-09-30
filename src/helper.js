@@ -90,6 +90,12 @@ exports.pasteIntoTemplate = (title, body, stylesheet) => {
 }
 
 exports.markdownParser = (line) => {
+    //convert markdown link to href 
+    line = line.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+    //convert markdown bold ** to html <b> element
+    line = line.replace(/\*\*(.*)\*\*/g, '<b>$1</b>');
+    //convert markdown bold __ to html <b> element
+    line = line.replace(/__(.*)__/g, '<b>$1</b>');
     //convert markdown italics * to html <i> element
     line = line.replace(/\*(.*)\*/g, '<i>$1</i>');
     //convert markdown italics _ to html <i> element
