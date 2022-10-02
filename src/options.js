@@ -24,22 +24,32 @@ function ssgulnur(options) {
     //defaults
     let outputFolder = "./dist";
     let stylesheetURL = "";
-    let config = {};
+    let config;
 
     if (options.config){
-        if (!fs.existsSync(options.config)){
-            console.log(chalk.bgRed("Error:") + chalk.red(" Config file does not exist."));
-            return;
+        // Print error message if config file does not exist
+        if (!fs.existsSync(options.config)) 
+            return console.log(chalk.bgRed("Error:") + chalk.red(" Config file does not exist."));
+        // Print error message if config file is not a .json file
+        if (path.extname(options.config) != ".json")
+            return console.log(chalk.bgRed("Error:") + chalk.red(" Config file must be a .json file."));
+        // Read config file
+        config = JSON.parse(fs.readFileSync(options.config));
+        // Print error message if config file is empty
+        if (Object.keys(config).length == 0)
+            return console.log(chalk.bgRed("Error:") + chalk.red(" Config file is empty"));
+
+        // Check config file options and perform actions
+        if (config.version) ssg.printVersion(version);
+        if (config.help) ssg.printHelp(description);
+        if (config.output){
+            outputFolder = config.output;
         }
-        if (path.extname(options.config) != ".json"){
-            console.log(chalk.bgRed("Error:") + chalk.red(" Config file must be a .json file."));
-            return;
+        if (config.stylesheet){
+            stylesheetURL = config.stylesheet;
         }
-        if (Object.keys(config).length == 0){
-            console.log(chalk.bgRed("Error:") + chalk.red(" Config file is empty"));
-            return;
-        }
-        config = require(options.config);
+        if (config.input) 
+            return ssg.input(config.input, outputFolder, stylesheetURL);
     }
 
     if (options.version) {
@@ -49,13 +59,13 @@ function ssgulnur(options) {
         return ssg.printHelp(description);
     } 
 
-    if (options.input || config.input) {
-        let input = options.input || config.input;
-        if (options.output || config.output) {
-            outputFolder = options.output || config.output;
+    if (options.input) {
+        let input = options.input;
+        if (options.output) {
+            outputFolder = options.output;
         } 
-        if (options.stylesheet || config.stylesheet) {
-            stylesheetURL = options.stylesheet || config.stylesheet;
+        if (options.stylesheet) {
+            stylesheetURL = options.stylesheet;
         }
         ssg.input(input, outputFolder, stylesheetURL);
     } else {
