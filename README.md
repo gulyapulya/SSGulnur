@@ -50,6 +50,23 @@ For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 * For each provided file an html file will be generated. By default, all html files will be placed into the `./dist` folder.
 * All titles need to be the first line in the file followed by two blank lines. Otherwise, it will be considered as part of the story.
 
+### ssgulnur -c | --config <source>
+* Allows the user to consolidate the above options inside of a JSON file, instead of using the command line to specify options. 
+* For file names with spaces, please use quotation marks. For example: `ssgulnur -c "Example file path.json"`.
+
+Config File Example:
+
+example.json
+```
+{
+  "input":"./path/to/input/files",
+  "output":"./path/to/output/files",
+  "stylesheet":"https://cdn.jsdelivr.net/npm/water.css@2/out/water.css",
+  "lang":"en-US"
+}
+```
+
+
 #### Options
 
  Option | Argument | Description  
