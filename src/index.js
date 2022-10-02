@@ -17,6 +17,7 @@ program
     .option("-i, --input <source>", "specify file or folder to use")
     .option("-o, --output <folder>", "specify an output folder for produced html")
     .option("-s, --stylesheet <url>", "specify a stylesheet to use")
+    .option("-c, --config <source>", "specify a config file to use")
     .action(ssgulnur);
     
 program.parse();
