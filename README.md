@@ -61,8 +61,7 @@ example.json
 {
   "input":"./path/to/input/files",
   "output":"./path/to/output/files",
-  "stylesheet":"https://cdn.jsdelivr.net/npm/water.css@2/out/water.css",
-  "lang":"en-US"
+  "stylesheet":"https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
 }
 ```
 
