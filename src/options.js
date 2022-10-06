@@ -39,9 +39,6 @@ function ssgulnur(options) {
         if (Object.keys(config).length == 0)
             return console.log(chalk.bgRed("Error:") + chalk.red(" Config file is empty"));
 
-        // Check config file options and perform actions
-        if (config.version) ssg.printVersion(version);
-        if (config.help) ssg.printHelp(description);
         if (config.output){
             outputFolder = config.output;
         }
@@ -53,10 +50,20 @@ function ssgulnur(options) {
     }
 
     if (options.version) {
-        return ssg.printVersion(version);
+        console.log(chalk.green.bold("SSGulnur: ") + chalk.green(version));
     }
     if (options.help) {
-        return ssg.printHelp(description);
+        console.log(chalk.green.bold("Help guide"));
+        console.log(chalk.gray(description));
+        console.log(chalk.green("Usage:"));
+        console.log(chalk.green.dim("ssgulnur -v | --version") + chalk.gray(" current version"));
+        console.log(chalk.green.dim("ssgulnur -h | --help") + chalk.gray(" help guide"));
+        console.log(chalk.green.dim("ssgulnur -i | --input <source>") + chalk.gray(" specify a file or folder to use"));
+        console.log(chalk.green("Options for input:"));
+        console.log(chalk.green.dim("-o | --output <folder>") + chalk.gray(" specify an output folder for produced html"));
+        console.log(chalk.gray("By default, the output folder would be ./dist unless specified otherwise"));
+        console.log(chalk.green.dim("-s | --stylesheet <url>") + chalk.gray(" specify a stylesheet url to use"));
+        console.log(chalk.gray("For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"));    
     } 
 
     if (options.input) {
