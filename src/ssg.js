@@ -94,26 +94,4 @@ function createHTML(filePath, outputFolder, stylesheetURL) {
     });
 }
 
-function printVersion(version){
-    console.log(chalk.green.bold("SSGulnur: ") + chalk.green(version));
-}
-
-function printHelp(description){
-    console.log(chalk.green.bold("Help guide"));
-    console.log(chalk.gray(description));
-    console.log(chalk.green("Usage:"));
-    console.log(chalk.green.dim("ssgulnur -v | --version") + chalk.gray(" current version"));
-    console.log(chalk.green.dim("ssgulnur -h | --help") + chalk.gray(" help guide"));
-    console.log(chalk.green.dim("ssgulnur -i | --input <source>") + chalk.gray(" specify a file or folder to use"));
-    console.log(chalk.green("Options for input:"));
-    console.log(chalk.green.dim("-o | --output <folder>") + chalk.gray(" specify an output folder for produced html"));
-    console.log(chalk.gray("By default, the output folder would be ./dist unless specified otherwise"));
-    console.log(chalk.green.dim("-s | --stylesheet <url>") + chalk.gray(" specify a stylesheet url to use"));
-    console.log(chalk.gray("For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"));
-}
-
-module.exports = {
-    input,
-    printVersion,
-    printHelp
-}
+module.exports = input;
