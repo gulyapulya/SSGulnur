@@ -107,3 +107,16 @@ exports.markdownParser = (line) => {
     return line;
 }
 
+
+exports.parseJSON = (path) => {
+    if (this.checkSource(path) == "none") 
+        return console.log(chalk.bgRed("Error:") + chalk.red(" config file does not exist."));
+    try {
+        const jsonString = fs.readFileSync(path);
+        const json = JSON.parse(jsonString);
+        return json;
+    } catch (err) {
+        console.log(chalk.bgRed("Error:") + chalk.red(" config file should be a valid json."));
+        return null;
+    }
+}
