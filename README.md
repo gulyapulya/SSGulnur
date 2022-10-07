@@ -50,6 +50,14 @@ For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 * For each provided file an html file will be generated. By default, all html files will be placed into the `./dist` folder.
 * All titles need to be the first line in the file followed by two blank lines. Otherwise, it will be considered as part of the story.
 
+#### Options
+
+ Option | Argument | Description  
+---------------|---------------|--------------
+ `-o \| --output`|`<folder>`| Allows to specify an output folder name. If exists, will be used, if not, gets created. <br>Cannot be a file. By default, `./dist`.
+`-s \| --stylesheet`|`<url>`| Allows to specify a particular stylesheet to use for html styling. <br> For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
+
+
 ### ssgulnur -c | --config <source>
 * Allows the user to consolidate the above options inside of a JSON file, instead of using the command line to specify options. 
 * For file names with spaces, please use quotation marks. For example: `ssgulnur -c "Example file path.json"`.
@@ -65,18 +73,11 @@ example.json
 }
 ```
 
-
-#### Options
-
- Option | Argument | Description  
----------------|---------------|--------------
- `-o \| --output`|`<folder>`| Allows to specify an output folder name. If exists, will be used, if not, gets created. <br>Cannot be a file. By default, `./dist`.
-`-s \| --stylesheet`|`<url>`| Allows to specify a particular stylesheet to use for html styling. <br> For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
-
-### Examples
+#### Examples
 
 * `ssgulnur -i "Example file path.txt"`
 * `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
+* `ssgulnur -i exampleFolderPath -o exampleOutputFolderPath -s "https://www.exampleCSSurl.com"`
 
 Stories folder is provided as a sample which you can use. It contains five Sherlock Holmes stories by Sir Arthur Conan Doyle. 
 Generated static pages for the sample can be seen here: https://ssg-gulnur-sample.vercel.app
