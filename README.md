@@ -40,6 +40,8 @@ Options for input:
 By default, the output folder would be ./dist unless specified otherwise
 -s | --stylesheet <url> specify a stylesheet url to use
 For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
+Config:
+-c | --config <file> specify a config file to use
 ```
 
 ### ssgulnur -i | --input <source>
@@ -57,6 +59,12 @@ For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
  `-o \| --output`|`<folder>`| Allows to specify an output folder name. If exists, will be used, if not, gets created. <br>Cannot be a file. By default, `./dist`.
 `-s \| --stylesheet`|`<url>`| Allows to specify a particular stylesheet to use for html styling. <br> For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 
+#### Examples
+
+* `ssgulnur -i "Example file path.txt"`
+* `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
+* `ssgulnur -i exampleFolderPath -o exampleOutputFolderPath -s "https://www.exampleCSSurl.com"`
+
 
 ### ssgulnur -c | --config <source>
 * Allows the user to consolidate the above options inside of a JSON file, instead of using the command line to specify options. 
@@ -72,12 +80,6 @@ example.json
   "stylesheet":"https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
 }
 ```
-
-#### Examples
-
-* `ssgulnur -i "Example file path.txt"`
-* `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
-* `ssgulnur -i exampleFolderPath -o exampleOutputFolderPath -s "https://www.exampleCSSurl.com"`
 
 Stories folder is provided as a sample which you can use. It contains five Sherlock Holmes stories by Sir Arthur Conan Doyle. 
 Generated static pages for the sample can be seen here: https://ssg-gulnur-sample.vercel.app
