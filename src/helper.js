@@ -1,10 +1,17 @@
+//NodeJS built-in core filesystem module
+//https://nodejs.org/api/fs.html
+const fs = require("fs");
+
 //Npm terminal styling module used for better looking logs
 //https://www.npmjs.com/package/chalk
 const chalk = require("chalk");
 
-//NodeJS built-in core filesystem module
-//https://nodejs.org/api/fs.html
-const fs = require("fs");
+//Npm module for file reading
+//https://www.npmjs.com/package/n-readlines
+const nReadlines = require('n-readlines');
+
+//Get log functions
+const { logErr } = require("./logger")
 
 exports.checkSource = (path) => {
     try {
@@ -22,12 +29,12 @@ exports.checkSource = (path) => {
 
 exports.createFolder = (path) => {
     try {
-        // if folder already exists
-        if (!fs.existsSync(path)) {
+        // if folder does not already exist
+        if (this.checkSource(path) == "none") {
             fs.mkdirSync(path);
         }
     } catch (err) {
-        console.log(chalk.bgRed("Error:") + chalk.red(err));
+        logErr(err);
     }
 }
 
@@ -37,7 +44,7 @@ exports.deleteFolder = (path) => {
         return;
     fs.rmSync(path, { recursive: true}, (err) => {
         if (err) {
-            console.log(chalk.bgRed("Error:") + chalk.red(err));
+            logErr(err);
         }
     });
 }
@@ -107,16 +114,59 @@ exports.markdownParser = (line) => {
     return line;
 }
 
+exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
+    //get file name solely with no extension
+    let file = filePath.split('\\').pop().split('/').pop().split(".")[0] + ".html";
+
+    const liner = new nReadlines(filePath);
+    let title = '';
+    let firstline = liner.next().toString("ascii");
+
+    //check for title
+    if (liner.next().toString("ascii") == "" && liner.next().toString("ascii") == "") {
+        title = firstline;
+    }
+    else {
+        liner.reset();
+    }
+
+    //create body
+    let line;
+    let paragraph = ``;
+    let body = ``;
+    while ((line = liner.next())) {
+        line = line.toString("utf-8");
+        if (line == ``) {
+            body += `
+            <p>${paragraph}</p>
+            `;
+            paragraph = ``;
+        }
+        else {
+            line = this.markdownParser(line);
+            paragraph += `${line} `;
+        }
+    }
+
+    let html = this.pasteIntoTemplate(title, body, stylesheetURL);
+
+    fs.writeFile(outputFolder + "/" + file, html, function (err) {
+        if (err) {
+            logErr(err);
+        }
+        console.log(chalk.green(file) + chalk.gray(' was created for ') + chalk.gray(filePath));
+    });
+}
 
 exports.parseJSON = (path) => {
     if (this.checkSource(path) == "none") 
-        return console.log(chalk.bgRed("Error:") + chalk.red(" config file does not exist."));
+        logErr("config file does not exist");
     try {
         const jsonString = fs.readFileSync(path);
         const json = JSON.parse(jsonString);
         return json;
     } catch (err) {
-        console.log(chalk.bgRed("Error:") + chalk.red(" config file should be a valid json."));
+        logErr("config file should be a valid json");
         return null;
     }
 }

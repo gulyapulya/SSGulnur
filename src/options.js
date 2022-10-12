@@ -7,17 +7,19 @@ const chalk = require("chalk");
 const {version, description} = require("../package.json");
 
 //Get functions related to the ssg and html creation
-const ssg = require("./ssg");
+const input = require("./input");
 
-//Get helper functions
-const helper = require("./helper")
+//Get helper function
+const { parseJSON } = require("./helper")
 
+//Get log functions
+const { logErr } = require("./logger")
 
 //Function for the main logic behind the command-line tool  
 //parameters: options, received from commander action handler 
 //https://www.npmjs.com/package/commander#custom-argument-processing
 function ssgulnur(options) {
-
+    
     if (options.version) {
         console.log(chalk.green.bold("SSGulnur: ") + chalk.green(version));
         return;
@@ -44,7 +46,7 @@ function ssgulnur(options) {
     let stylesheetURL = "";
 
     if (options.config){
-        const config = helper.parseJSON(options.config);
+        const config = parseJSON(options.config);
         if (config.output){
             outputFolder = config.output;
         }
@@ -52,22 +54,21 @@ function ssgulnur(options) {
             stylesheetURL = config.stylesheet;
         }
         if (config.input) {
-            ssg(config.input, outputFolder, stylesheetURL);
+            input(config.input, outputFolder, stylesheetURL);
         }
         return;
     }
 
     if (options.input) {
-        let input = options.input;
         if (options.output) {
             outputFolder = options.output;
         } 
         if (options.stylesheet) {
             stylesheetURL = options.stylesheet;
         }
-        ssg(input, outputFolder, stylesheetURL);
+        input(options.input, outputFolder, stylesheetURL);
     } else {
-        console.log(chalk.bgRed("Error:") + chalk.red(" unknown command or option, please see ssgulnur -help for available options."));
+        logErr("unknown command or option, please see ssgulnur -help for reference");
     }
 }
 
