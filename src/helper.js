@@ -10,6 +10,10 @@ const chalk = require("chalk");
 //https://www.npmjs.com/package/n-readlines
 const nReadlines = require('n-readlines');
 
+//Npm module for markdown to html converter
+//https://github.com/showdownjs/showdown
+const showdown  = require('showdown');
+
 //Get log functions
 const { logErr } = require("./logger")
 
@@ -96,22 +100,10 @@ exports.pasteIntoTemplate = (title, body, stylesheet) => {
     return html;
 }
 
-exports.markdownParser = (line) => {
-     //convert markdown heading 1 # to html <h1> element
-     line = line.replace(/(^#{1}\s)(.*)/, '<h1>$2</h1>');
-     //convert markdown heading 2 ## to html <h2> element
-     line = line.replace(/(^#{2}\s)(.*)/, '<h2>$2</h2>');
-    //convert markdown link to href 
-    line = line.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
-    //convert markdown bold ** to html <b> element
-    line = line.replace(/\*\*(.*)\*\*/g, '<b>$1</b>');
-    //convert markdown bold __ to html <b> element
-    line = line.replace(/__(.*)__/g, '<b>$1</b>');
-    //convert markdown italics * to html <i> element
-    line = line.replace(/\*(.*)\*/g, '<i>$1</i>');
-    //convert markdown italics _ to html <i> element
-    line = line.replace(/_(.*)_/g, '<i>$1</i>');
-    return line;
+exports.markdownParser = (lines) => {
+    const converter = new showdown.Converter();
+    lines = converter.makeHtml(lines);
+    return lines;
 }
 
 exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
@@ -137,13 +129,13 @@ exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
     while ((line = liner.next())) {
         line = line.toString("utf-8");
         if (line == ``) {
+            paragraph = this.markdownParser(paragraph);
             body += `
             <p>${paragraph}</p>
             `;
             paragraph = ``;
         }
         else {
-            line = this.markdownParser(line);
             paragraph += `${line} `;
         }
     }
