@@ -90,4 +90,4 @@ If you notice a bug or have a suggestion for a new feature, please go to the iss
 
 ## Contribution
 
-Contributions are always welcome! Please check the CONTRIBUTING.md file for more details.
+Contributions are always welcome! Please check the [CONTRIBUTING.md](https://github.com/gulyapulya/SSGulnur/blob/main/CONTRIBUTING.md) file for more details.
