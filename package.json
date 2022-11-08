@@ -8,7 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --config .eslintrc.js src/**"
+    "lint": "eslint --config .eslintrc.js src/**",
+    "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml,ts,tsx}\"",
+    "prettier-check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml,ts,tsx}\"",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,8 @@
   "homepage": "https://github.com/gulyapulya/SSGulnur#readme",
   "devDependencies": {
     "eslint": "^8.24.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   },
   "dependencies": {
@@ -30,5 +35,9 @@
     "commander": "^9.4.0",
     "n-readlines": "^1.0.1",
     "showdown": "^2.1.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --config .eslintrc.js --cache --fix",
+    "*.{js,css,md}": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml,ts,tsx}\""
   }
 }

@@ -1,4 +1,3 @@
-
 <p align="center">
 <img width="459" alt="SSGulnur" align="center" src="https://user-images.githubusercontent.com/52351598/192425336-04087ba4-0af9-4a29-a167-b84dddbd81bb.png">
 </p>
@@ -14,11 +13,11 @@ SSGulnur is a command-line tool to generate static HTML web pages from a provide
 Node is required.
 
 1. Clone this repository to your local machine
-2. Navigate to the cloned directory in your terminal 
-3. Run npm to install globally 
-`npm install -g`
+2. Navigate to the cloned directory in your terminal
+3. Run npm to install globally
+   `npm install -g`
 
-## Usage 
+## Usage
 
 ### ssgulnur -v | --version
 
@@ -46,33 +45,34 @@ Config:
 
 ### ssgulnur -i | --input <source>
 
-* Supported file types are .txt and .md. For markdown, only italicized text stying is processed properly.
-* Source can be a single file or a folder which can also contain sub-folders with files.
-* For file names with spaces, please use quotation marks. For example: `ssgulnur -i "Example file path.txt"`.
-* For each provided file an html file will be generated. By default, all html files will be placed into the `./dist` folder.
-* All titles need to be the first line in the file followed by two blank lines. Otherwise, it will be considered as part of the story.
+- Supported file types are .txt and .md. For markdown, only italicized text stying is processed properly.
+- Source can be a single file or a folder which can also contain sub-folders with files.
+- For file names with spaces, please use quotation marks. For example: `ssgulnur -i "Example file path.txt"`.
+- For each provided file an html file will be generated. By default, all html files will be placed into the `./dist` folder.
+- All titles need to be the first line in the file followed by two blank lines. Otherwise, it will be considered as part of the story.
 
 #### Options
 
- Option | Argument | Description  
----------------|---------------|--------------
- `-o \| --output`|`<folder>`| Allows to specify an output folder name. If exists, will be used, if not, gets created. <br>Cannot be a file. By default, `./dist`.
-`-s \| --stylesheet`|`<url>`| Allows to specify a particular stylesheet to use for html styling. <br> For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
+| Option               | Argument   | Description                                                                                                                                 |
+| -------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-o \| --output`     | `<folder>` | Allows to specify an output folder name. If exists, will be used, if not, gets created. <br>Cannot be a file. By default, `./dist`.         |
+| `-s \| --stylesheet` | `<url>`    | Allows to specify a particular stylesheet to use for html styling. <br> For example, https://cdn.jsdelivr.net/npm/water.css@2/out/water.css |
 
 #### Examples
 
-* `ssgulnur -i "Example file path.txt"`
-* `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
-* `ssgulnur -i exampleFolderPath -o exampleOutputFolderPath -s "https://www.exampleCSSurl.com"`
-
+- `ssgulnur -i "Example file path.txt"`
+- `ssgulnur --input exampleFolderPath --output exampleOutputFolderPath`
+- `ssgulnur -i exampleFolderPath -o exampleOutputFolderPath -s "https://www.exampleCSSurl.com"`
 
 ### ssgulnur -c | --config <source>
-* Allows the user to consolidate the above options inside of a JSON file, instead of using the command line to specify options. 
-* For file names with spaces, please use quotation marks. For example: `ssgulnur -c "Example file path.json"`.
+
+- Allows the user to consolidate the above options inside of a JSON file, instead of using the command line to specify options.
+- For file names with spaces, please use quotation marks. For example: `ssgulnur -c "Example file path.json"`.
 
 Config File Example:
 
 example.json
+
 ```
 {
   "input":"./path/to/input/files",
@@ -81,6 +81,13 @@ example.json
 }
 ```
 
-Stories folder is provided as a sample which you can use. It contains five Sherlock Holmes stories by Sir Arthur Conan Doyle. 
+Stories folder is provided as a sample which you can use. It contains five Sherlock Holmes stories by Sir Arthur Conan Doyle.
 Generated static pages for the sample can be seen here: https://ssg-gulnur-sample.vercel.app
 
+## Bugs and new features
+
+If you notice a bug or have a suggestion for a new feature, please go to the issues tab of the project and check if similar ideas do not already exist. If there are no duplicates, please create a new issue and document it giving as many details as possible.
+
+## Contribution
+
+Contributions are always welcome! Please check the CONTRIBUTING.md file for more details.
