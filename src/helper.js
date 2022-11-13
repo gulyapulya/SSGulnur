@@ -127,14 +127,13 @@ exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
     line = line.toString('utf-8');
     if (line == ``) {
       paragraph = this.markdownParser(paragraph);
-      body += `
-            <p>${paragraph}</p>
-            `;
+      body += `${paragraph}`;
       paragraph = ``;
     } else {
       paragraph += `${line} `;
     }
   }
+  body += `${this.markdownParser(paragraph)}`;
 
   let html = this.pasteIntoTemplate(title, body, stylesheetURL);
 
