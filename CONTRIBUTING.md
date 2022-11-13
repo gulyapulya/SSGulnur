@@ -22,8 +22,19 @@ VSCode is preferred editor, as the recommended extensions will be downloaded aut
 4. Create a new branch with a descriptive name such as issue-123.
 5. Work on that branch and make all required changes to complete the issue.
 6. Test you work, run the tool in your terminal.
-    - run `npm run lint` and `npm run prettier-check` to check your code for styling issues or bugs.
+   - run `npm run lint` and `npm run prettier-check` to check your code for styling issues or bugs.
 7. Commit regularly.
 8. When you are done, push your work and request a pull to the `main` branch.
 
 Please give meaningful messages to your commits and pull requests.
+
+## Testing
+
+The [Jest Framework](https://jestjs.io) is used for testing in this project.
+
+You can use the following commands:
+
+- `npm test` for running test
+- `npm test example-test` for running only the tests that were specified with a pattern or filename (e.g. `npm test createHTML`)
+- `npm run test:watch` for running tests related to changed files based on git (uncommitted files)
+- `npm run coverage` for checking the coverage of the tests

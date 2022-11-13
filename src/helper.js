@@ -104,11 +104,8 @@ exports.markdownParser = (lines) => {
   return lines;
 };
 
-exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
-  //get file name solely with no extension
-  let file = filePath.split('\\').pop().split('/').pop().split('.')[0] + '.html';
-
-  const liner = new nReadlines(filePath);
+exports.createHTML = (path, style = '') => {
+  const liner = new nReadlines(path);
   let title = '';
   let firstline = liner.next().toString('ascii');
 
@@ -126,8 +123,7 @@ exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
   while ((line = liner.next())) {
     line = line.toString('utf-8');
     if (line == ``) {
-      paragraph = this.markdownParser(paragraph);
-      body += `${paragraph}`;
+      body += `${this.markdownParser(paragraph)}`;
       paragraph = ``;
     } else {
       paragraph += `${line} `;
@@ -135,7 +131,14 @@ exports.createHTML = (filePath, outputFolder, stylesheetURL) => {
   }
   body += `${this.markdownParser(paragraph)}`;
 
-  let html = this.pasteIntoTemplate(title, body, stylesheetURL);
+  return this.pasteIntoTemplate(title, body, style);
+};
+
+exports.process = (filePath, outputFolder, stylesheetURL) => {
+  //get file name solely with no extension
+  let file = filePath.split('\\').pop().split('/').pop().split('.')[0] + '.html';
+
+  let html = this.createHTML(filePath, stylesheetURL);
 
   fs.writeFile(outputFolder + '/' + file, html, function (err) {
     if (err) {

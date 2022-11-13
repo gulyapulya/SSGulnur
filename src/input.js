@@ -2,7 +2,7 @@
 const nodePath = require('path');
 
 //Get helper functions
-const { checkSource, readFilesFrom, deleteFolder, createFolder, createHTML } = require('./helper');
+const { checkSource, readFilesFrom, deleteFolder, createFolder, process } = require('./helper');
 
 //Get log functions
 const { logErr } = require('./logger');
@@ -36,7 +36,7 @@ function input(source, outputFolder, stylesheetURL) {
   createFolder(outputFolder);
 
   sourceFiles.forEach((currentFile) => {
-    createHTML(currentFile, outputFolder, stylesheetURL);
+    process(currentFile, outputFolder, stylesheetURL);
   });
 }
 
