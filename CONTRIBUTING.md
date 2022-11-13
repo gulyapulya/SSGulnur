@@ -23,6 +23,7 @@ VSCode is preferred editor, as the recommended extensions will be downloaded aut
 5. Work on that branch and make all required changes to complete the issue.
 6. Test you work, run the tool in your terminal.
    - run `npm run lint` and `npm run prettier-check` to check your code for styling issues or bugs.
+   - run `npm test` to make sure all the tests are still successful.
 7. Commit regularly.
 8. When you are done, push your work and request a pull to the `main` branch.
 
