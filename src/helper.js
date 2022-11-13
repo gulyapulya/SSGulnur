@@ -26,7 +26,7 @@ exports.checkSource = (path) => {
       return 'file';
     }
   } catch (err) {
-    return 'lalala';
+    return 'none';
   }
 };
 
