@@ -19,6 +19,9 @@ const { logErr } = require('./logger');
 //parameters: options, received from commander action handler
 //https://www.npmjs.com/package/commander#custom-argument-processing
 function ssgulnur(options) {
+  if (!options) {
+    return;
+  }
   if (options.version) {
     console.log(chalk.green.bold('SSGulnur: ') + chalk.green(version));
     return;
