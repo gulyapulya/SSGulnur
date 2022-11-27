@@ -13,7 +13,8 @@
     "lint": "eslint --config .eslintrc.js src/**",
     "prettier": "prettier --write \"./**/*.{md,jsx,json,html,css,js,yml,ts,tsx}\"",
     "prettier-check": "prettier --check \"./**/*.{md,jsx,json,html,css,js,yml,ts,tsx}\"",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "np"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "husky": "^8.0.2",
     "jest": "^29.3.1",
     "lint-staged": "^13.0.3",
+    "np": "^7.6.2",
     "prettier": "2.7.1"
   },
   "dependencies": {
