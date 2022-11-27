@@ -1,8 +1,8 @@
 {
   "name": "ssgulnur",
-  "version": "1.0.1",
+  "version": "0.0.9",
   "description": "SSGulnur is a command-line tool to generate static HTML web page from a provided file or folder.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "bin": {
     "ssgulnur": "./src/index.js"
   },
@@ -21,8 +21,8 @@
     "url": "git+https://github.com/gulyapulya/SSGulnur.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gulnur Baimukhambetova <gulnur2703@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/gulyapulya/SSGulnur/issues"
   },
