@@ -10,7 +10,9 @@ SSGulnur is a command-line tool to generate static HTML web pages from a provide
 
 ## Installation
 
-Node is required. Run npm to install globally `npm install --global ssgulnur`
+Node is required. Run npm to install globally `npm install --global ssgulnur`.
+
+Please use bash terminal.
 
 ## Usage
 
